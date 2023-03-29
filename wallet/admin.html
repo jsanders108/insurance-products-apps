@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+        <title>Insurance</title>
+        
+    </head>
+    <body>
+
+        <div id="header-container">
+            <h1 class="header-title">CRYPTO WALLET INSURANCE APP</h1> 
+            <h2 class="header-subtitle">Admin Page</h2>
+            <nav>
+                <a id="customer-link" href="customer.html">Customer Page</a>
+                <a id="admin-link" href="admin.html">Admin Page</a>
+            </nav>
+        </div>
+
+
+        <!----------------  CONNECT METAMASK ------------->
+        <div id="main-connect-wrapper">
+            <div id="sub-connect-wrapper">
+                <button onclick="connectMetamask()" id="connect-btn">Connect to Metamask</button>
+                <p id="metamask-connection-message">Not Connected</p>
+            </div>
+        </div>
+
+        
+        <!----------------  DEPLOY CONTRACTS ------------->
+        <h1 class="section-title">Deploy Contracts</h1>
+        <div class="section-container">
+
+            <h3 class="section-subtitle" >Step 1: Deploy the Wallet Depository Contract ... </h3>
+            <button class="main-section-btn" onclick="deployWalletDepository()">Deploy Wallet Depository</button>
+            <p class="confirmation-message" id="walletDepoConnection-message"></p>
+
+            <h3 class="section-subtitle" >Step 2: Deploy the Wallet Policy Factory Contract ... </h3>
+            <button class="main-section-btn" onclick="deployWalletPolicyFactory()">Deploy Wallet Policy Factory</button>
+            <p class="confirmation-message" id="walletPolicyFactoryConnection-message"></p>
+
+        </div>
+
+
+        <!----------------  SWEEP FUNDS ------------->
+        <h1 class="section-title">Sweep Funds to Wallet Depository</h1>
+        <div class="section-container">
+
+            <h3 class="section-subtitle" >Step 1: Enter the Wallet Depository contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="depository-address-1" placeholder="Enter Wallet Depository address" />
+            </div>
+            <button class="main-section-btn" onclick="getDepositoryAddress1()">Submit Address</button>
+            <p class="confirmation-message" id="depository-address1-confirmation"></p>
+
+
+            <h3 class="section-subtitle" >Step 2: Enter the Wallet Factory contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="wallet-factory-address-1" placeholder="Enter Wallet Factory address" />
+            </div>
+            <button class="main-section-btn" onclick="getWalletFactoryAddress1()">Submit Address</button>
+            <p class="confirmation-message" id="walletFactory-address1-confirmation"></p>
+
+
+            <h3 class="section-subtitle" >Step 3: Check Wallet Factory balance ... </h3>
+            <button class="main-section-btn" onclick="getFactoryBalance()">Get Balance</button>
+            <p class="confirmation-message" id="factory-balance-message"></p>
+
+
+            <h3 class="section-subtitle" >Step 4: Sweep funds from Wallet Factory to Depository ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="sweep-amount" placeholder="Enter amount of ETH to sweep" />
+            </div>
+            <button class="main-section-btn" onclick="sweep()">Sweep Funds</button>
+            <p class="confirmation-message" id="sweep-confirmation-message"></p>
+
+        </div>
+
+
+        <!----------------  APPROVE AND PAY CLAIMS  ------------->
+        <h1 class="section-title">Approve and Pay Claims</h1>
+        <div class="section-container">
+
+            <h3 class="section-subtitle" >Step 1: Enter the Policy contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="policy-address-1" placeholder="Enter Policy contract address" />
+            </div>
+            <button class="main-section-btn" onclick="getWalletPolicyAddress1()">Submit Address</button>
+            <p class="confirmation-message" id="policy-address1-confirmation"></p>
+
+
+            <h3 class="section-subtitle" >Step 2: Enter the Wallet Depository contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="depository-address-2" placeholder="Enter Wallet Depository address" />
+            </div>
+            <button class="main-section-btn" onclick="getDepositoryAddress2()">Submit Address</button>
+            <p class="confirmation-message" id="depository-address2-confirmation"></p>
+
+
+            <h3 class="section-subtitle" >Step 3: View claim details ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="claim-id-number" placeholder="Enter Claim Id #" />
+            </div>
+            <button class="main-section-btn" onclick="getClaimDetailsAdmin()">View Claim Details</button>
+            <div id="claim-details-wrapper">
+                <p class="detail-item" id="claim-id-1"></p>
+                <p class="detail-item" id="policy-address-1"></p>
+                <p class="detail-item" id="claim-date-1"></p>
+                <p class="detail-item" id="claim-amount-1"></p>
+                <p class="detail-item" id="wallet-hacked-1"></p>
+                <p class="detail-item" id="insured-wallet-1"></p>
+                <p class="detail-item" id="payout-amount-1"></p>
+                <p class="detail-item" id="payout-address-1"></p>
+                <p class="detail-item" id="is-approved-1"></p>
+                <p class="detail-item" id="has-been-paid-1"></p>
+            </div>
+
+            
+            <h3 class="section-subtitle" >Step 4: Approve and pay claim ... </h3>
+            <button class="main-section-btn" onclick="payClaim()">Approve and Pay Claim</button>
+            <p class="confirmation-message" id="payout-confirmation-message"></p>
+            <p class="confirmation-message" id="payout-transaction-hash"></p>
+
+        </div>
+
+
+        <!----------------  SWAP ETH for cETH (Compound Finance)  ------------->
+        <h1 class="section-title">Invest Funds into Compound Finance (cETH)</h1>
+        <div class="section-container">
+
+            <h3 class="section-subtitle" >Step 1: Enter the Wallet Depository contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="depository-address-4" placeholder="Enter Wallet Depository address" />
+            </div>
+            <button class="main-section-btn" onclick="getDepositoryAddress4()">Submit Address</button>
+            <p class="confirmation-message" id="depository-address4-confirmation"></p>
+
+            <h3 class="section-subtitle" >Step 2: Check ETH Balance ... </h3>
+            <button class="main-section-btn" onclick="getBalanceOfETH()">Check Balance</button>
+            <p class="confirmation-message" id="ETH-balance-confirmation"></p>
+
+            <h3 class="section-subtitle" >Step 2: Swap ETH for cETH in Compound Finance ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="amount-ETH-for-CETH" placeholder="Enter amount of ETH to swap" />
+            </div>
+            <button class="main-section-btn" onclick="getCETH()">Swap ETH for cETH</button>
+            <p class="confirmation-message" id="ETH-for-CETH-confirmation"></p>
+
+        </div>
+
+        <!----------------  REDEEM cETH for ETH (Compound Finance)  ------------->
+
+        <h1 class="section-title">Redeem Funds from Compound Finance</h1>
+        <div class="section-container">
+
+            <h3 class="section-subtitle" >Step 1: Enter the Wallet Depository contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="depository-address-5" placeholder="Enter Wallet Depository address" />
+            </div>
+            <button class="main-section-btn" onclick="getDepositoryAddress5()">Submit Address</button>
+            <p class="confirmation-message" id="depository-address5-confirmation"></p>
+
+            <h3 class="section-subtitle" >Step 2: Check cETH Balance ... </h3>
+            <button class="main-section-btn" onclick="getBalanceOfCETH()">Get Balance</button>
+            <p class="confirmation-message" id="CETH-balance-confirmation"></p>
+
+            <h3 class="section-subtitle" >Step 3: Redeem cETH from Compound Finance (to ETH) ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="amount-CETH-for-ETH" placeholder="Enter amount of cETH to redeem" />
+            </div>
+            <button class="main-section-btn" onclick="getETH()">Redeem cETH</button>
+            <p class="confirmation-message" id="CETH-for-ETH-confirmation"></p>
+
+        </div>
+
+
+
+
+
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+            type="application/javascript"></script>
+        <script src="index.js" ></script>
+        
+    </body>
+</html>

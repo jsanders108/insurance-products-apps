@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+        <title>Insurance</title>
+        
+    </head>
+    <body>
+
+        <div id="header-container">
+            <h1 class="header-title">CRYPTO WALLET INSURANCE APP</h1> 
+            <h2 class="header-subtitle">Customer Page</h2>
+            <nav>
+                <a id="customer-link" href="customer.html">Customer Page</a>
+                <a id="admin-link" href="admin.html">Admin Page</a>
+            </nav>
+        </div>
+
+
+        <!----------------  POLICY OPTIONS INFO ------------->
+        <h1 id="policy-options-title">Wallet Insurance Policy Options</h1>
+        <div id="policy-options-main-container">
+            <div class="options-box">
+                <p class="coverage-title">Policy #1</p>
+                <ul>
+                    <li class="policy-details">Up to 50 ETH of coverage in case of wallet hack</li>
+                    <li class="policy-details">Cost = 0.02 ETH</li>
+                    <li class="policy-details">30 days of coverage</li>
+                </ul>
+            </div>
+            <div class="options-box">
+                <p class="coverage-title">Policy #2</p>
+                <ul>
+                    <li class="policy-details">Up to 25 ETH of coverage in case of wallet hack</li>
+                    <li class="policy-details">Cost = 0.01 ETH</li>
+                    <li class="policy-details">30 days of coverage</li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <!----------------  CONNECT METAMASK ------------->
+        <div id="main-connect-wrapper">
+            <div id="sub-connect-wrapper">
+                <button onclick="connectMetamask()" id="connect-btn">Connect to Metamask</button>
+                <p id="metamask-connection-message">Not Connected</p>
+            </div>
+        </div>
+        
+        <!----------------  CREATE A NEW WALLET INSURANCE POLICY ------------->
+        <h1 class="section-title">Create a New Wallet Insurance Policy</h1>
+        <div class="section-container">
+
+
+            <h3 class="section-subtitle" >Step 1: Enter the Wallet Factory contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="wallet-factory-address-2" placeholder="Enter Wallet Factory address"/>
+            </div>
+            <button class="main-section-btn" onclick="getWalletFactoryAddress2()">Submit Address</button>
+            <p class="confirmation-message" id="walletFactory-address2-confirmation"></p>
+
+            
+            <h3 class="section-subtitle" >Step 2: Create a new wallet insurance policy ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="newpolicy-product-type" placeholder="Enter Policy Type Desired (1 or 2)"/>
+                <input class="form-input" id="newpolicy-insured-wallet-address" placeholder="Enter wallet address to insure"/>
+                <input class="form-input" id="newpolicy-eth-deposit-amount" placeholder="Enter payment amount (in ETH)"/>
+            </div>
+            <button class="main-section-btn" onclick="createWalletPolicy()">Create a New Policy</button>
+            <p class="confirmation-message" id="wallet-policy-created-confirmation"></p>
+            <p class="confirmation-message" id="wallet-policy-address"></p>
+
+
+            <h3 class="section-subtitle" >Step 3: View new wallet insurance policy details ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="newpolicy-address" placeholder="Enter new Wallet Policy address"/>
+            </div>
+            <button class="main-section-btn" onclick="getPolicyData()">View Details</button>
+            <div id="policy-details-wrapper">
+                <p class="detail-item" id="policy-type"></p>
+                <p class="detail-item" id="policy-holder"></p>
+                <p class="detail-item" id="insured-wallet-address"></p>
+                <p class="detail-item" id="purchase-date"></p>
+                <p class="detail-item" id="expiration-date"></p>
+                <p class="detail-item" id="policy-id-number"></p>
+                <p class="detail-item" id="eth-coverage-remaining"></p>
+                <p class="detail-item" id="has-expired"></p>
+            </div>
+
+        </div>
+
+         <!----------------  FILE A CLAIM  ------------->
+         <h1 class="section-title">File an Insurance Claim</h1>
+         <div class="section-container">
+
+
+            <h3 class="section-subtitle" >Step 1: Enter your Wallet Policy contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="policy-address-2" placeholder="Enter your Wallet Policy address"/>
+            </div>
+            <button class="main-section-btn" onclick="getWalletPolicyAddress2()">Submit Address</button>
+            <p class="confirmation-message" id="policy-address2-confirmation"></p>
+
+
+            <h3 class="section-subtitle" >Step 2: File a claim ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="wallet-claim-amount" placeholder="Enter claim amount" />
+                <input class="form-input" id="wallet-hacked" placeholder="Enter address of hacked wallet" />
+                <input class="form-input" id="wallet-payout-address" placeholder="Enter address for your payout" />
+            </div>
+            <button class="main-section-btn" onclick="fileWalletInsClaim()">File Claim</button>
+            <p class="confirmation-message" id="claim-filed-confirmation"></p>
+
+
+            <h3 class="section-subtitle" >Step 3: View claim details ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="depository-address-3" placeholder="Enter Wallet Depository contract address"/>
+            </div>
+            <button class="main-section-btn" onclick="getDepositoryAddress3()">Submit Address</button>
+            <p class="confirmation-message" id="depository-address3-confirmation"></p>
+            <button class="main-section-btn" onclick="getClaimDetailsCustomer()">View Claim Details</button>
+            <div id="claim-details-wrapper">
+                <p class="detail-item" id="claim-id-2"></p>
+                <p class="detail-item" id="policy-id-2"></p>
+                <p class="detail-item" id="claim-date-2"></p>
+                <p class="detail-item" id="claim-amount-2"></p>
+                <p class="detail-item" id="wallet-hacked-2"></p>
+                <p class="detail-item" id="insured-wallet-2"></p>
+                <p class="detail-item" id="payout-amount-2"></p>
+                <p class="detail-item" id="payout-address-2"></p>
+                <p class="detail-item" id="is-approved-2"></p>
+                <p class="detail-item" id="has-been-paid-2"></p>
+            </div>
+
+         </div>
+
+
+        <!----------------  RENEW POLICY  ------------->
+        <h1 class="section-title">Renew Your Policy</h1>
+         <div class="section-container">
+
+
+            <h3 class="section-subtitle" >Step 1: Enter your Wallet Policy contract address ... </h3>
+            <div class="form-wrapper">
+                <input class="form-input" id="policy-address-3" placeholder="Enter your policy address"/>
+            </div>
+            <button class="main-section-btn" onclick="getWalletPolicyAddress3()">Submit Address</button>
+            <p class="confirmation-message" id="policy-address3-confirmation"></p>
+
+
+            <h3 class="section-subtitle" >Step 2: Renew your policy ... </h3>
+            <div class="form-wrapper">
+                <p id="renewal-message-1">If you hold Policy Type 1, then renewal cost = 0.02 ETH</p>
+                <p id="renewal-message-2">If you hold Policy Type 2, then renewal cost = 0.01 ETH</p>
+                <input class="form-input" id="renewal-deposit-amount" placeholder="Enter renewal payment amount (in ETH)"/>
+            </div>
+            <button class="main-section-btn" onclick="renew()">Renew Policy</button>
+            <p class="confirmation-message"id="wallet-policy-renewed-confirmation"></p>
+
+         </div>
+
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+            type="application/javascript"></script>
+        <script src="index.js" ></script>
+        
+    </body>
+</html>

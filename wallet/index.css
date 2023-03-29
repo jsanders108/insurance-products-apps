@@ -1,0 +1,221 @@
+html, body {
+  margin: 0;
+  padding: 5px;
+  font-family: 'Roboto', sans-serif;
+  background: #e6e6ff;
+}
+
+  
+/* HEADER */
+  
+#header-container {
+display: flex; 
+flex-direction: column; 
+background-image: linear-gradient(to right, #000033 , blue);
+
+padding: 20px 10px; 
+margin-bottom: 30px; 
+box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
+text-align: center; 
+}
+    
+.header-title,
+.header-subtitle {
+color: whitesmoke; 
+font-family:'Ubuntu', sans-serif;
+}
+
+
+#customer-link, #admin-link {
+color: whitesmoke;
+margin: 0 10px; 
+cursor: pointer;
+text-decoration: none;
+}
+
+#customer-link:hover,
+#customer-link:focus {
+color: lightsalmon; 
+}
+
+#admin-link:hover,
+#admin-link:focus {
+color: lightsalmon; 
+}
+
+
+nav {
+align-self: flex-end;
+}
+
+/* CONNECTORS */
+
+#sub-connect-wrapper {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 10px; 
+}
+
+#connection-message{
+margin: 10px;
+}
+
+#connect-btn,
+#submit-btn {
+background: maroon;
+color: white;
+padding: 10px 20px; 
+font-size: 20px; 
+border: none;
+border-radius: 7px; 
+margin-bottom: 5px; 
+cursor: pointer; 
+}
+
+#submit-btn {
+align-self: center;
+}
+
+#connect-btn:active {
+box-shadow: inset 10px 10px 10px -3px rgba(0, 0, 0, 0.7);
+background: lightcoral; 
+}
+
+
+/*MAIN SECTIONS */
+
+/*Layout*/
+
+#policy-options-main-container {
+display:flex;
+justify-content: center;
+margin-bottom: 50px; 
+}
+
+.options-box {
+width: 350px; 
+margin: 0 20px;  
+background: #ffebcc;
+border: 2px solid black;
+border-radius: 7px; 
+box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.section-container {
+display: flex;
+flex-direction: column;   
+background: whitesmoke;
+box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+max-width: 600px; 
+margin: 60px auto; 
+margin-top: 10px; 
+padding: 10px; 
+border-radius: 10px;
+}
+
+
+#claim-details-wrapper, 
+#policy-details-wrapper {
+display: flex;
+flex-direction: column;
+width: 500px; 
+margin: 20px auto; 
+}
+
+
+/*Typography*/
+
+#policy-options-title {
+text-align: center; 
+}
+
+.coverage-title {
+font-size: 20px; 
+font-weight: bold;
+text-align: center; 
+}
+
+.policy-details {
+margin-top: 8px; 
+margin-right: 10px; 
+}
+
+.section-title {
+text-align: center; 
+}
+
+.section-subtitle {
+margin-left: 15px; 
+margin-bottom: 10px;
+}
+
+.confirmation-message {
+text-align: center;
+margin-top: 25px;  
+color: red; 
+}  
+
+.detail-item {
+margin: 5px 10px; 
+}
+
+span {
+font-weight: bold;
+}
+
+#payout-transaction-hash {
+margin-top: 0;
+}
+
+#renewal-message-1,
+#renewal-message-2 {
+margin-top: 0px; 
+}
+
+#wallet-policy-address {
+margin-top: 0px; 
+}
+
+/*Buttons*/
+
+.main-section-btn {
+align-self: center;
+background-color: #000033;
+border: none;
+color: white;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin-top: 5px;
+margin-bottom: 0px; 
+border-radius: 12px; 
+cursor: pointer;
+}
+
+.main-section-btn:focus {
+outline: none;
+}
+
+.main-section-btn:active {
+box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+background: lightcoral; 
+}
+
+
+/*Forms, inputs, and Labels*/
+
+.form-wrapper {
+display: flex;
+flex-direction: column; 
+margin: 20px auto;  
+}
+
+.form-input {
+width: 245px;
+margin-bottom: 0px;
+margin-top: 10px;  
+padding: 5px 5px;
+}
